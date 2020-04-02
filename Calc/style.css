@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'digital-7';
+    src: url('fonts/digital-7.ttf')
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #666;
+    font-family: monospace, sans-serif; 
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px dotted #333;
+    
+}
+
+.title {
+    margin-bottom: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px dotted #333;
+}
+
+.calc-container {
+    display: flex;
+    flex-direction: column; 
+    width: 250px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.7);
+}
+
+.display {    
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 30px;
+    text-align: right;
+}
+
+.row {
+    display: flex;
+    
+}
+
+.btn, .display {
+    font-family: 'digital-7';
+}
+
+.btn {
+    width: 25%;
+    height: 50px;
+    margin: 2px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: font-size, .2s;
+}
+
+.btn:hover {
+    font-size: 25px;
+}
+
+.btnResult {
+    width: calc(50% + 4px);
+    font-size: 30px;
+    color: #fff;
+    background-color: #999;
+}
+
+
+
+
+
