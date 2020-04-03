@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="calc.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="title">
+            Awesome calculator
+        </h1>
+        <div class="calc-container">
+            <div class="row">
+                <input type="text" class="display">
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="numPressedClear()">C</button>
+                <button type="button" class="btn" onclick="numPressedDelte()">DEL</button>
+                <button type="button" class="btn" onclick="numPressedPercent()">%</button>
+                <button type="button" class="btn" onclick="numPressedDivide()">/</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="numPressed(7)">7</button>
+                <button type="button" class="btn" onclick="numPressed(8)">8</button>
+                <button type="button" class="btn" onclick="numPressed(9)">9</button>
+                <button type="button" class="btn" onclick="numPressedMultiple()">x</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="numPressed(4)">4</button>
+                <button type="button" class="btn" onclick="numPressed(5)">5</button>
+                <button type="button" class="btn" onclick="numPressed(6)">6</button>
+                <button type="button" class="btn" onclick="numPressedMinus()">-</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="numPressed(1)">1</button>
+                <button type="button" class="btn" onclick="numPressed(2)">2</button>
+                <button type="button" class="btn" onclick="numPressed(3)">3</button>
+                <button type="button" class="btn" onclick="numPressedPlus()">+</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="numPressed(0)">0</button>
+                <button type="button" class="btn" onclick="numPressedComa()">.</button>
+                <button type=" button" class="btn btnResult" onclick="numPressedResult()">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
