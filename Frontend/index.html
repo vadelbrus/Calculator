@@ -16,11 +16,11 @@
         </h1>
         <div class="calc-container">
             <div class="row">
-                <input type="text" class="display">
+                <input type="text" class="display" value="0">
             </div>
             <div class="row">
                 <button type="button" class="btn" onclick="numPressedClear()">C</button>
-                <button type="button" class="btn" onclick="numPressedDelte()">DEL</button>
+                <button type="button" class="btn" onclick="numPressedDelete()">DEL</button>
                 <button type="button" class="btn" onclick="operationPressed('%')">%</button>
                 <button type="button" class="btn" onclick="operationPressed('/')">/</button>
             </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <button type="button" class="btn" onclick="numPressed(0)">0</button>
-                <button type="button" class="btn" onclick="numPressedComa()">.</button>
+                <button type="button" class="btn" onclick="numPressed('.')">.</button>
                 <button type=" button" class="btn btnResult" onclick="numPressedResult()">=</button>
             </div>
         </div>
