@@ -4,20 +4,20 @@
 let firstValue = "";
 let secondValue = "";
 let result = "";
-let operatorFlag = false;
+// let operatorFlag = false;
 let isDecimal = false;
-let isActive = true;
+// let isActive = true;
 let mathOperator = "";
 
 // CHECKING WHETHER USER IS TYPING FIRST OR SECOND NUMBER 
 
 function numPressed(num) {
-    if (operatorFlag) {
+    if (mathOperator != "") {
 
         // CHECKING IS DECIMAL IS CLICKED AND PREVENTING ITS DOUBLING
 
         if (num === ".") {
-            if (isDecimal === false) {
+            if (!isDecimal) {
                 secondValue += num;
                 isDecimal = true;
             }
@@ -27,10 +27,10 @@ function numPressed(num) {
 
     } else {
 
-        // CHECKING IS DECIMAL IS CLICKED AND PREVENTING ITS DOUBLING - UNFORCH REPEATING THE SAME CODE... :( 
+        // CHECKING IF DECIMAL IS CLICKED AND PREVENTING ITS DOUBLING - UNFORCH REPEATING THE SAME CODE... :( 
 
         if (num === ".") {
-            if (isDecimal === false) {
+            if (!isDecimal) {
                 firstValue += num;
                 isDecimal = true;
             }
@@ -46,25 +46,35 @@ function numPressed(num) {
 
 function numPressedDelete() {
 
-    if (isActive) {
+    let delBuffer = "";
+
+    if (mathOperator == "") {
         firstValue = firstValue.slice(0, -1);
-        document.querySelector('.display').value = firstValue;
+        delBuffer = firstValue;
 
     }
     else {
         secondValue = secondValue.slice(0, -1);
-        document.querySelector('.display').value = secondValue;
+        delBuffer = secondValue;
+
     }
 
+    updateDisplay(delBuffer);
+
+
+}
+
+function updateDisplay(displayValue) {
+    document.querySelector('.display').value = displayValue;
 }
 
 // CHECKING IF USER CLICKS MATH OPERATOR
 
 function operationPressed(operator) {
-    operatorFlag = !operatorFlag;
+    // operatorFlag = !operatorFlag;
     mathOperator = operator;
     document.querySelector('.display').value = operator;
-    isActive = !isActive;
+    // isActive = !isActive;
     isDecimal = false;
 
 }
@@ -81,17 +91,21 @@ function numPressedResult() {
     // SOLVING DECIMAL PRECISION PROBLEM ADDING SOME MATH FUNCTIONS
     switch (mathOperator) {
         case "+":
-            result = Math.round(parseFloat(((firstValue + secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            // result = Math.round(parseFloat(((firstValue + secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            result = firstValue + secondValue;
 
             break;
         case "-":
-            result = Math.round(parseFloat(((firstValue - secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            // result = Math.round(parseFloat(((firstValue - secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            result = firstValue - secondValue;
             break;
         case "x":
-            result = Math.round(parseFloat(((firstValue * secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            // result = Math.round(parseFloat(((firstValue * secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            result = (firstValue * secondValue).toFixed(9).toString();
+
             break;
         case "/":
-            result = Math.round(parseFloat(((firstValue / secondValue) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
+            result = (firstValue / secondValue).toFixed(9).toString();
             break;
         case "%":
             result = Math.round(parseFloat(((firstValue * (secondValue / 100)) * Math.pow(10, 2)).toFixed(2))) / Math.pow(10, 2);
@@ -110,8 +124,9 @@ function numPressedResult() {
 
     firstValue = "";
     secondValue = "";
-    operatorFlag = false;
-    isActive = true;
+    // operatorFlag = false;
+    mathOperator = "";
+    // isActive = true;
     isDecimal = false;
     // result = "";
 
@@ -123,8 +138,9 @@ function numPressedClear() {
     firstValue = "";
     secondValue = "";
     result = "";
-    operatorFlag = false;
-    isActive = true;
+    mathOperator = "";
+    // operatorFlag = false;
+    // isActive = true;
     isDecimal = false;
     document.querySelector('.display').value = "0";
 }
