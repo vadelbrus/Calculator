@@ -49,23 +49,48 @@ body {
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.7);
 }
 
+.row {
+    display: flex;
+     
+}
+
+.row:first-child {
+    flex-wrap: wrap;
+    
+    
+}
+
+.showOperation {
+    width: 100%;    
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: "digital-7";
+    text-align: right;
+    background-color: #fff;
+    border-bottom: 1px dotted #666;
+}
+
 .display {    
     width: 100%;
-    height: 50px;
+    box-sizing: border-box;
     margin-bottom: 10px;
     padding: 0 10px;
     border: none;
     box-shadow: none;
     outline: none;
-    box-sizing: border-box;
     font-size: 30px;
     text-align: right;
 }
 
-.row {
-    display: flex;
-    
+.operationPresented {
+    font-size: 8px;
+    color: #666;
+    width: 100px;
+    background-color: red;
+    height: 20px;
+    margin-bottom: 5px;
 }
+
 
 .btn, .display {
     font-family: 'digital-7';

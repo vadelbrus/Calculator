@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <script src="calc.js"></script>
+    
 </head>
 
 <body>
@@ -14,8 +14,10 @@
         <h1 class="title">
             Awesome calculator
         </h1>
+        
         <div class="calc-container">
             <div class="row">
+                <div class="showOperation">0</div>
                 <input type="text" class="display" value="0">
             </div>
             <div class="row">
@@ -45,10 +47,11 @@
             <div class="row">
                 <button type="button" class="btn" onclick="numPressed(0)">0</button>
                 <button type="button" class="btn" onclick="numPressed('.')">.</button>
-                <button type=" button" class="btn btnResult" onclick="numPressedResult()">=</button>
+                <button type="button" class="btn btnResult" onclick="numPressedResult()">=</button>
             </div>
         </div>
     </div>
+    <script src="calc.js"></script>
 </body>
 
 </html>
