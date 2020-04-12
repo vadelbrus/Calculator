@@ -65,12 +65,15 @@ function operationPressed(operator) {
 
 function updateDisplay(displayValue) {
     document.querySelector('.display').value = displayValue;
-    subText.textContent = `${firstValue} ${mathOperator} ${secondValue} =`;
+    if(result) {
+        subText.textContent = `${firstValue} ${mathOperator} ${secondValue} =`
+    } else subText.textContent = `${firstValue} ${mathOperator} ${secondValue}`; 
 }
 
 // MAKING CALCULATIONS DEPENDING ON CHOSEN OPERATOR
 
 function numPressedResult() {
+  
 
     // CHANGING STRINGS INTO NUMBERS SO MATH OPERATIONS CAN BE POSSIBLE
     
@@ -107,7 +110,8 @@ function numPressedResult() {
     // RESETING VARIABLES
 
     updateDisplay(result);
-    firstValue = "";
+    // firstValue = "";
+    firstValue = result.toString();
     secondValue = "";
     mathOperator = "";
     isDecimal = false;
