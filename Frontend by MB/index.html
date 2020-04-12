@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">    
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1 class="title">
+            Awesome calculator
+        </h1>
+        <div class="calc-container">
+            <div class="row">
+                <input id="display" type="text" class="display" value="">
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="buttonPressed('c')">C</button>
+                <button type="button" class="btn" onclick="buttonPressed('d')">DEL</button>
+                <button type="button" class="btn" onclick="buttonPressed('%')">%</button>
+                <button type="button" class="btn" onclick="buttonPressed('/')">/</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="buttonPressed('7')">7</button>
+                <button type="button" class="btn" onclick="buttonPressed('8')">8</button>
+                <button type="button" class="btn" onclick="buttonPressed('9')">9</button>
+                <button type="button" class="btn" onclick="buttonPressed('*')">x</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="buttonPressed('4')">4</button>
+                <button type="button" class="btn" onclick="buttonPressed('5')">5</button>
+                <button type="button" class="btn" onclick="buttonPressed('6')">6</button>
+                <button type="button" class="btn" onclick="buttonPressed('-')">-</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="buttonPressed('1')">1</button>
+                <button type="button" class="btn" onclick="buttonPressed('2')">2</button>
+                <button type="button" class="btn" onclick="buttonPressed('3')">3</button>
+                <button type="button" class="btn" onclick="buttonPressed('+')">+</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn" onclick="buttonPressed('0')">0</button>
+                <button type="button" class="btn" onclick="buttonPressed('.')">.</button>
+                <button type=" button" class="btn btnResult" onclick="buttonPressed('=')">=</button>
+            </div>
+        </div>
+    </div>
+	<script src="calc.js"></script>
+</body>
+</html>
