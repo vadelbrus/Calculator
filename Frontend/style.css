@@ -49,50 +49,37 @@ body {
     box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.7);
 }
 
-.row {
-    display: flex;
-     
-}
-
-.row:first-child {
-    flex-wrap: wrap;
-    
-    
-}
-
-.showOperation {
-    width: 100%;    
+.displayEquation {
+    width: 75%;
+    height: 20px;
     padding: 0 10px;
-    font-size: 16px;
-    font-family: "digital-7";
-    text-align: right;
-    background-color: #fff;
-    border-bottom: 1px dotted #666;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-align: left;
+    color: gray;
 }
 
 .display {    
     width: 100%;
-    box-sizing: border-box;
+    height: 50px;
     margin-bottom: 10px;
     padding: 0 10px;
     border: none;
     box-shadow: none;
     outline: none;
+    box-sizing: border-box;
     font-size: 30px;
     text-align: right;
 }
 
-.operationPresented {
-    font-size: 8px;
-    color: #666;
-    width: 100px;
-    background-color: red;
-    height: 20px;
-    margin-bottom: 5px;
+.row {
+    display: flex;    
 }
 
-
-.btn, .display {
+.btn, .display, .displayEquation {
     font-family: 'digital-7';
 }
 

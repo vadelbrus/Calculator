@@ -1,131 +1,112 @@
 // SETTING VARIABLES
+let bufferedNumber = null;
+let currentNumber = null;
+let operatorFlag = null;
+let action = null;
+let precision = 9;
+resetVars();
 
-let firstValue = "";
-let secondValue = "";
-let result = "";
-let isDecimal = false;
-let mathOperator = "";
-let subText = document.querySelector(".showOperation");
-
-// CHECKING WHETHER USER IS TYPING FIRST OR SECOND NUMBER 
-
-function numPressed(num) {
-    if (mathOperator != "") {
-
-        // CHECKING IF DECIMAL IS CLICKED AND PREVENTING ITS DOUBLING
-
-        if (num === ".") {
-            if (!isDecimal) {
-                secondValue += num;
-                isDecimal = true;
+// CHECKING WHETHER USER IS TYPING FIRST OR SECOND NUMBER
+function buttonPressed(button) {
+    switch(button) {
+        case ("+"):
+            setAction(add);
+            break;
+        case ("-"):
+            setAction(subtract);
+            break;
+        case ("*"):
+            setAction(multiply);
+            break;
+        case ("/"):
+            setAction(divide);
+            break;
+        case ("."):
+            appendComma();
+            break;
+        case ("d"):
+            if (operatorFlag) {
+                currentNumber = "" + bufferedNumber;
+                action = null;
+                operatorFlag = false;
             }
-        }
-        else secondValue += num;
-        updateDisplay(secondValue);
-
-    } else {
-
-        // CHECKING IF DECIMAL IS CLICKED AND PREVENTING ITS DOUBLING - UNFORCH REPEATING THE SAME CODE... :( 
-
-        if (num === ".") {
-            if (!isDecimal) {
-                firstValue += num;
-                isDecimal = true;
+            currentNumber = currentNumber.slice(0, -1);
+            updateDisplay(currentNumber);
+            break;
+        case ("c"):
+            resetVars();
+            break;
+        case ("%"):
+            if (operatorFlag) {
+                currentNumber = bufferedNumber;
+                operatorFlag = false;
             }
-        }
-        else firstValue += num;
-        updateDisplay(firstValue);
-    }
-}
-
-// SETTING DEL KEY THAT REMOVES LAST DIGIT FROM NUMBER
-
-function numPressedDelete() {
-    let delBuffer = "";
-    if (mathOperator == "") {
-        firstValue = firstValue.slice(0, -1);
-        delBuffer = firstValue;
-    }
-    else {
-        secondValue = secondValue.slice(0, -1);
-        delBuffer = secondValue;
-    }
-    updateDisplay(delBuffer);
-}
-
-// CHECKING IF USER CLICKS MATH OPERATOR
-
-function operationPressed(operator) {
-    mathOperator = operator;
-    updateDisplay(operator);
-    isDecimal = false;
-}
-
-// SETTING LIVE DISPLAY FUNCTION
-
-function updateDisplay(displayValue) {
-    document.querySelector('.display').value = displayValue;
-    if(result) {
-        subText.textContent = `${firstValue} ${mathOperator} ${secondValue} =`
-    } else subText.textContent = `${firstValue} ${mathOperator} ${secondValue}`; 
-}
-
-// MAKING CALCULATIONS DEPENDING ON CHOSEN OPERATOR
-
-function numPressedResult() {
-  
-
-    // CHANGING STRINGS INTO NUMBERS SO MATH OPERATIONS CAN BE POSSIBLE
-    
-    firstValue = Number(firstValue);
-    secondValue = Number(secondValue);
-
-    // SOLVING DECIMAL PRECISION PROBLEM ADDING SOME MATH FUNCTIONS
-    switch (mathOperator) {
-        case "+":
-            result = firstValue + secondValue;
-
+            currentNumber = "" + (currentNumber/100);
+            updateDisplay(currentNumber);
             break;
-        case "-":
-
-            result = firstValue - secondValue;
+        case ("="):
+            bufferedNumber = action(bufferedNumber, currentNumber);
+            operatorFlag = true;
+            updateDisplay(bufferedNumber);
             break;
-        case "x":
-
-            result = +(firstValue*secondValue).toFixed(9);
-            break;
-        case "/":
-            result = +(firstValue / secondValue).toFixed(9);
-            break;
-
-        case "%":
-            result = +(firstValue * (secondValue / 100)).toFixed(9);
-            break;
-            
         default:
-            result = secondValue;
-
-    }
-
-    // RESETING VARIABLES
-
-    updateDisplay(result);
-    // firstValue = "";
-    firstValue = result.toString();
-    secondValue = "";
-    mathOperator = "";
-    isDecimal = false;
-    }
-
-// RESETING VARIABLES IF 'C' IS CLICKED
-
-function numPressedClear() {
-    firstValue = "";
-    secondValue = "";
-    result = "";
-    mathOperator = "";
-    isDecimal = false;
-    updateDisplay("0");
-    subText.textContent = "0";
+            numberPressed(button);
+            break;
+	}
 }
 
+function setAction(act) {
+    if (!operatorFlag) {
+        bufferedNumber = currentNumber;
+    }
+    
+    action = act;
+    operatorFlag = true;
+}
+
+function numberPressed(char) {
+    if (operatorFlag) {
+        currentNumber = "";
+        operatorFlag = false;
+    }
+    currentNumber = ensureNumberPrecision(currentNumber + char);    
+    updateDisplay(currentNumber);
+}
+
+function appendComma() {
+    if (currentNumber.indexOf(".") == -1) {
+        currentNumber += ".";
+    }
+}
+
+function add(var1, var2) {
+    return Number(var1) + Number(var2);
+}
+
+function subtract(var1, var2) {
+    return var1 - var2;
+}
+
+function multiply(var1, var2) {
+    return var1 * var2;
+}
+
+function divide(var1, var2) {
+    return var1 / var2;
+}
+
+function resetVars() {
+    bufferedNumber = null;
+    currentNumber = "";
+    action = null;
+    operatorFlag = false;
+    updateDisplay(currentNumber);
+}
+
+function updateDisplay(value) {
+    document.getElementById("display").value = ensureNumberPrecision(value);
+}
+
+function ensureNumberPrecision(number) {
+    return "" + Math.round(number * Math.pow(10, precision)) / Math.pow(10, precision);
+}
